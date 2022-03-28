@@ -131,4 +131,24 @@
 
 Ingress, Addons, API сервер не прописывал
 
+Тестовый деплой
+
+        root@mck-k8s-cp1:/etc# kubectl create deploy nginx --image=nginx:latest --replicas=2
+        deployment.apps/nginx created
+        root@mck-k8s-cp1:/etc# kubectl get po -o wide
+        NAME                     READY   STATUS              RESTARTS   AGE   IP             NODE    NOMINATED NODE   READINESS GATES
+        nginx-7c658794b9-2x6vq   1/1     Running             0          12s   10.233.105.1   node4   <none>           <none>
+        nginx-7c658794b9-5qgzm   0/1     ContainerCreating   0          12s   <none>         node6   <none>           <none>
+        root@mck-k8s-cp1:/etc# kubectl get po -o wide
+        NAME                     READY   STATUS    RESTARTS   AGE   IP             NODE    NOMINATED NODE   READINESS GATES
+        nginx-7c658794b9-2x6vq   1/1     Running   0          16s   10.233.105.1   node4   <none>           <none>
+        nginx-7c658794b9-5qgzm   1/1     Running   0          16s   10.233.108.1   node6   <none>           <none>
+        root@mck-k8s-cp1:/etc#
+        root@mck-k8s-cp1:/etc#
+        root@mck-k8s-cp1:/etc#
+        root@mck-k8s-cp1:/etc# kubectl get po -o wide
+        NAME                     READY   STATUS    RESTARTS   AGE   IP             NODE    NOMINATED NODE   READINESS GATES
+        nginx-7c658794b9-2x6vq   1/1     Running   0          20s   10.233.105.1   node4   <none>           <none>
+        nginx-7c658794b9-5qgzm   1/1     Running   0          20s   10.233.108.1   node6   <none>           <none>
+        root@mck-k8s-cp1:/etc#
 
