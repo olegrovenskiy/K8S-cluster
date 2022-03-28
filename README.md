@@ -52,6 +52,67 @@
     ansible-playbook -i inventory/mycluster/inventory.ini cluster.yml --become --become-user=root -v --extra-vars "ansible_user=ПОЛЬЗОВАТЕЛЬ    ansible_password=ПАРОЛЬ ansible_sudo_pass=ПАРОЛЬ"
 
 
+Инсталяция прошла успешно:
+
+        PLAY RECAP ********************************************************************************************************
+        localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+        node1                      : ok=647  changed=122  unreachable=0    failed=0    skipped=1219 rescued=0    ignored=4 
+        node2                      : ok=577  changed=107  unreachable=0    failed=0    skipped=1076 rescued=0    ignored=2 
+        node3                      : ok=579  changed=108  unreachable=0    failed=0    skipped=1074 rescued=0    ignored=2 
+        node4                      : ok=423  changed=71   unreachable=0    failed=0    skipped=710  rescued=0    ignored=1 
+        node5                      : ok=423  changed=71   unreachable=0    failed=0    skipped=709  rescued=0    ignored=1 
+        node6                      : ok=423  changed=71   unreachable=0    failed=0    skipped=709  rescued=0    ignored=1 
+
+        Monday 28 March 2022  19:42:35 +0000 (0:00:00.139)       0:17:37.964 **********
+        ===============================================================================
+        container-engine/docker : ensure docker packages are installed -------------------------------------------- 75.22s
+        kubernetes/preinstall : Preinstall | wait for the apiserver to be running --------------------------------- 35.11s
+        kubernetes/preinstall : Install packages requirements ----------------------------------------------------- 31.32s
+        kubernetes/preinstall : Update package management cache (APT) --------------------------------------------- 29.82s
+        kubernetes/control-plane : Joining control plane node to the cluster. ------------------------------------- 28.85s
+        kubernetes/kubeadm : Join to cluster ---------------------------------------------------------------------- 25.73s
+        network_plugin/calico : Wait for calico kubeconfig to be created ------------------------------------------ 25.70s
+        download : download_container | Download image if required ------------------------------------------------ 22.89s
+        download : download_container | Download image if required ------------------------------------------------ 21.92s
+        download : download_container | Download image if required ------------------------------------------------ 21.32s
+        download : download_container | Download image if required ------------------------------------------------ 18.31s
+        container-engine/docker : ensure docker-ce repository is enabled ------------------------------------------ 17.57s
+        kubernetes/control-plane : kubeadm | Initialize first master ---------------------------------------------- 15.25s
+        download : download_file | Download item ------------------------------------------------------------------ 14.77s
+        download : download_container | Download image if required ------------------------------------------------ 13.17s
+        download : download_file | Download item ------------------------------------------------------------------ 13.00s
+        download : download_container | Download image if required ------------------------------------------------ 12.33s
+        etcd : reload etcd ---------------------------------------------------------------------------------------- 10.97s
+        download : download_container | Download image if required ------------------------------------------------ 10.45s
+        download : download_container | Download image if required ------------------------------------------------ 10.15s
+        oleg@mck-devops-tools:~/kubespray$
+        oleg@mck-devops-tools:~/kubespray$
+        
+ 
+ На ноде control-plane
+ 
+         root@mck-k8s-cp1:/etc# kubectl version
+        Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.5", GitCommit:"c285e781331a3785a7f436042c65c5641ce8a9e9", GitTreeState:"clean", BuildDate:"2022-03-16T15:58:47Z", GoVersion:"go1.17.8", Compiler:"gc", Platform:"linux/amd64"}
+        Server Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.5", GitCommit:"c285e781331a3785a7f436042c65c5641ce8a9e9", GitTreeState:"clean", BuildDate:"2022-03-16T15:52:18Z", GoVersion:"go1.17.8", Compiler:"gc", Platform:"linux/amd64"}
+
+
+        root@mck-k8s-cp1:/etc# kubectl get nodes
+        NAME    STATUS   ROLES                  AGE   VERSION
+        node1   Ready    control-plane,master   36m   v1.23.5
+        node2   Ready    control-plane,master   35m   v1.23.5
+        node3   Ready    control-plane,master   35m   v1.23.5
+        node4   Ready    <none>                 34m   v1.23.5
+        node5   Ready    <none>                 34m   v1.23.5
+        node6   Ready    <none>                 34m   v1.23.5
+        root@mck-k8s-cp1:/etc#
+
+        root@mck-k8s-cp1:/etc# kubeadm version
+        kubeadm version: &version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.5", GitCommit:"c285e781331a3785a7f436042c65c5641ce8a9e9", GitTreeState:"clean", BuildDate:"2022-03-16T15:57:37Z", GoVersion:"go1.17.8", Compiler:"gc", Platform:"linux/amd64"}
+        root@mck-k8s-cp1:/etc#
+
+    
+    
+
 
 
 
