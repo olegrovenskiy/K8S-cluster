@@ -152,3 +152,4 @@ Ingress, Addons, API сервер не прописывал
         nginx-7c658794b9-5qgzm   1/1     Running   0          20s   10.233.108.1   node6   <none>           <none>
         root@mck-k8s-cp1:/etc#
 
+То есть по всем проверкам кластер выглядит как рабочий.
