@@ -110,7 +110,23 @@
         kubeadm version: &version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.5", GitCommit:"c285e781331a3785a7f436042c65c5641ce8a9e9", GitTreeState:"clean", BuildDate:"2022-03-16T15:57:37Z", GoVersion:"go1.17.8", Compiler:"gc", Platform:"linux/amd64"}
         root@mck-k8s-cp1:/etc#
 
-    
+           root@mck-k8s-cp1:/etc# kubectl cluster-info
+        Kubernetes control plane is running at https://127.0.0.1:6443
+
+        To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+        root@mck-k8s-cp1:/etc#
+        
+        
+        root@mck-k8s-cp1:/etc# kubectl get cs -A
+        Warning: v1 ComponentStatus is deprecated in v1.19+
+        NAME                 STATUS    MESSAGE                         ERROR
+        controller-manager   Healthy   ok
+        scheduler            Healthy   ok
+        etcd-0               Healthy   {"health":"true","reason":""}
+        etcd-1               Healthy   {"health":"true","reason":""}
+        etcd-2               Healthy   {"health":"true","reason":""}
+        root@mck-k8s-cp1:/etc#
+
     
 
 Ingress, Addons, API сервер не прописывал
