@@ -153,3 +153,11 @@ Ingress, Addons, API сервер не прописывал
         root@mck-k8s-cp1:/etc#
 
 То есть по всем проверкам кластер выглядит как рабочий.
+
+
+запуск плейбука
+
+$ ansible-playbook -i inventory/mycluster/inventory.ini cluster.yml --become --become-user=root -v
+
+
+
