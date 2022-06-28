@@ -92,5 +92,11 @@
     root@mck-t-k8s-cp1:/etc#
 
 
+прописал в файлу all.yml
 
+        ## Upstream dns servers
+        # upstream_dns_servers:
+        #   - 8.8.8.8
+        #   - 8.8.4.4
 
+наши DNS сервера
