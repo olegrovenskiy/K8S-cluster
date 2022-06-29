@@ -100,3 +100,27 @@
         #   - 8.8.4.4
 
 наши DNS сервера
+
+не помогло, исправил нетплан
+
+        oleg@mck-devops-tools:~/kubespray$ cat /etc/netplan/00-installer-config.yaml
+        # This is the network config written by 'subiquity'
+        network:
+          ethernets:
+            ens160:
+              addresses:
+              - 10.102.8.79/24
+              gateway4: 10.102.8.1
+              nameservers:
+                addresses:
+                - 10.102.5.101
+                - 10.102.5.102
+                search:
+                - mgc.local
+                - migcredit.ru
+          version: 2
+        oleg@mck-devops-tools:~/kubespray$
+
+
+
+
